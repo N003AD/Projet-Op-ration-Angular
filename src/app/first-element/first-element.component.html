@@ -1,0 +1,18 @@
+`
+    <div *ngIf="tab.length > 0">
+      <ul>
+        <li *ngFor="let number of tab" [ngClass]="{ 'even': number % 2 === 0, 'odd': number % 2 !== 0 }">
+          {{ number }} :
+          <ng-container [ngSwitch]="number">
+            <span *ngSwitchCase="let n when 0..9">échec</span>
+            <span *ngSwitchCase="let n when 10..13">moyen</span>
+            <span *ngSwitchCase="let n when 14..16">bien</span>
+            <span *ngSwitchDefault>très bien</span>
+          </ng-container>
+        </li>
+      </ul>
+    </div>
+    <div *ngIf="tab.length === 0">
+      <p>Le tableau est vide.</p>
+    </div>
+  `
