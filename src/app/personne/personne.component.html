@@ -4,7 +4,17 @@
 
 
 
-  <ul>
+  <!-- <ul>
     <li *ngFor="let elt of personnes">
     {{ elt.nom }} {{ elt.prenom }}
-  </ul>
+  </ul> -->
+
+  <!-- Afficher la liste des personnes -->
+<div *ngFor="let personne of personnes">
+  <p>{{ personne.nom }} {{ personne.prenom }}</p>
+  <button (click)="modifierPersonne(personne)">Modifier</button>
+  <!-- <button (click)="supprimerPersonne(personne.id)">Supprimer</button> -->
+</div>
+
+
+

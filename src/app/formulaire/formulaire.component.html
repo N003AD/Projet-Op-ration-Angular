@@ -1,3 +1,35 @@
+<div class="container">
+  <div class="login-form">
+    <h5>Connectez vous : Cheikh Tidiane </h5>
+        <div [hidden]="submitted">
+          <h3>Mon formulaire</h3>
+          <form #monForm=ngForm (ngSubmit)=ajouterPersonne()>
+          <div>
+          Nom : <input type=text name=nom [(ngModel)]=nom required #lastName="ngModel">
+          </div>
+          <br>
+          <div [hidden]="lastName.valid" class="alert alert-danger">
+          Le nom est obligatoire
+          </div>
+          <div>
+          Prenom : <input type=text name=prenom [(ngModel)]=prenom required
+          #firstName="ngModel">
+          </div>
+          <div [hidden]="firstName.valid" >
+          Le prénom est obligatoire
+          </div>
+          <div>
+            <br>
+          <button [disabled]=!monForm.valid>
+          ajouter
+          </button>
+          </div>
+          </form>
+          </div>
+      <div [hidden]="!submitted">Personne ajoutée</div>
+  </div>
+</div>
+
 <!-- <div class="container">
   <div class="login-form">
     <h2>Connexion</h2>
@@ -15,22 +47,5 @@
   </div>
 </div> -->
 
-<!-- <form #monForm=ngForm (ngSubmit)=ajouterPersonne()>
-  <div>
-  Nom : <input type=text name=nom [(ngModel)]=personnes.nom required #lastName="ngModel">
-  </div>
-  <div [hidden]="lastName.valid">
-  Le nom est obligatoire
-  </div>
-  <div>
-  Prénom : <input type=text name=prenom [(ngModel)]=personnes.prenom required #firstName="ngModel">
-  </div>
-  <div [hidden]="firstName.valid">
-  Le prénom est obligatoire
-  </div>
-  <div>
-  <button [disabled]=!monForm.valid>
-  Ajouter
-  </button>
-  </div>
-  </form> -->
+
+

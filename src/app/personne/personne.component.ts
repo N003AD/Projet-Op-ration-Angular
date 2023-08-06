@@ -8,15 +8,15 @@ import { Personne } from '../classes/personne'
   styleUrls: ['./personne.component.css']
 })
 export class PersonneComponent implements OnInit {
-  personnes: Array<Personne> = new Array<Personne>()
+  // personnes: Array<Personne> = new Array<Personne>()
   // constructor(private personneService:PersonneService) {
   //   this.personnes = this.personneService.getAll()
   //   }
-
+  personnes: Personne[] = [];
   constructor(private personneService: PersonneService) {
-    this.personneService.getAll().subscribe(res => {
-    this.personnes = res;
-    });
+    // this.personneService.getAll().subscribe(res => {
+    // this.personnes = res;
+    // });
     }
 
 
@@ -27,5 +27,25 @@ export class PersonneComponent implements OnInit {
     //   });
     //   });
     //   }
-    ngOnInit() { }
+    ngOnInit() {
+      this.getPersonnes();
+     }
+
+      getPersonnes() {
+    this.personneService.getPersonnes().subscribe((data: Personne[]) => {
+      this.personnes = data;
+    });
+  }
+
+  modifierPersonne(personne: Personne) {
+    // Implémenter la logique pour ouvrir un formulaire de modification
+    // et mettre à jour la personne dans la liste après la modification
+  }
+
+  supprimerPersonne(personneId: number) {
+    this.personneService.supprimerPersonne(personneId).subscribe(() => {
+      // Supprimer la personne de la liste après la suppression réussie
+      // this.personnes = this.personnes.filter(p => p.id !== personneId);
+    });
+  }
     }

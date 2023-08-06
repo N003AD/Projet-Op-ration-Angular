@@ -11,6 +11,8 @@ import { ObjectToArrayPipe } from './object-to-array.pipe';
 import { FormulaireComponent } from './formulaire/formulaire.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ErrorComponent } from './error/error.component';
+import { MyPipeComponent } from './my-pipe-component/my-pipe-component.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,10 @@ import { HttpClientModule } from '@angular/common/http';
     AdresseComponent,
     PersonneComponent,
     ObjectToArrayPipe,
-    FormulaireComponent
+    FormulaireComponent,
+    ErrorComponent,
+    ObjectToArrayPipe,
+    MyPipeComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +34,10 @@ import { HttpClientModule } from '@angular/common/http';
     RouterModule.forRoot([
       { path: 'personne', component: PersonneComponent },
       { path: 'adresse', component: AdresseComponent },
-      { path: 'formu', component: FormulaireComponent }
+      { path: 'pipe', component: MyPipeComponent },
+      { path: 'formulaire', component: FormulaireComponent },
+      // Route pour le composant d'erreur (404)
+      { path: '**', component: ErrorComponent }
     ], { enableTracing: true })
   ],
   providers: [],
